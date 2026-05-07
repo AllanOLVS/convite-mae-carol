@@ -1,4 +1,4 @@
-﻿*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
  
 :root{
   --c-orange:#D4580A;
@@ -27,9 +27,9 @@ html,body{
   color:var(--c-dark);
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════
    FULLPAGE WRAPPER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════ */
 #fp{
   width:100%;height:100%;
   position:relative;
@@ -63,9 +63,9 @@ html,body{
   transform:translateY(-60px);
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════
    BACKGROUND PATTERNS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════ */
 .slide-bg{
   position:absolute;
   inset:0;
@@ -90,9 +90,9 @@ html,body{
   align-items:center;
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════
    PROGRESS DOTS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════ */
 #dots{
   position:fixed;
   right:28px;
@@ -117,9 +117,9 @@ html,body{
   transform:scale(1.4);
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SLIDE 1 â€” ABERTURA
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════
+   SLIDE 1 — ABERTURA
+═══════════════════════════════ */
 #s1{
   background:var(--c-dark);
   text-align:center;
@@ -217,9 +217,9 @@ html,body{
   overflow:hidden;
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SLIDE 2 â€” QUEM SOU EU
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════
+   SLIDE 2 — QUEM SOU EU
+═══════════════════════════════ */
 #s2{
   background:var(--c-cream);
   padding:24px 24px 40px;
@@ -235,14 +235,15 @@ html,body{
 /* Carrossel */
 .carousel-wrap{
   width:100%;
-  max-width:800px;
-  margin-bottom:28px;
+  max-width:340px;
+  margin: 0 auto 36px auto;
 }
  
 .carousel{
   position:relative;
   overflow:hidden;
-  border-radius:20px;
+  border-radius:24px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.2);
 }
  
 .carousel-track{
@@ -252,8 +253,8 @@ html,body{
  
 .carousel-slide{
   min-width:100%;
-  aspect-ratio:16/9;
-  background:linear-gradient(135deg, #2C1A0A 0%, #5C3010 50%, #D4580A 100%);
+  aspect-ratio:4/5;
+  background:#1C1209;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -261,9 +262,15 @@ html,body{
   position:relative;
   overflow:hidden;
 }
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
  
 /* SUBSTITUA OS PLACEHOLDERS ABAIXO COM IMAGENS REAIS:
-   Troque o conteÃºdo de cada .carousel-slide por:
+   Troque o conteúdo de cada .carousel-slide por:
    <img src="SUA_FOTO.jpg" style="width:100%;height:100%;object-fit:cover;"> */
 .carousel-slide .photo-ph{
   width:100px;height:100px;
@@ -349,10 +356,12 @@ html,body{
 }
  
 .name-block .name-sub{
-  font-family:var(--font-script);
-  font-size:1.1rem;
-  color:var(--c-muted);
-  margin-top:6px;
+  font-family:var(--font-body);
+  font-size:15px;
+  font-weight:500;
+  color:var(--c-mid);
+  margin-top:10px;
+  letter-spacing: 0.5px;
 }
  
 .info-row{
@@ -366,18 +375,19 @@ html,body{
  
 .info-chip{
   background:var(--c-white);
-  border:1px solid var(--c-border);
-  border-radius:14px;
-  padding:14px 16px;
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:18px;
+  padding:18px 22px;
   display:flex;
-  gap:12px;
-  align-items:flex-start;
-  transition:transform 0.2s, box-shadow 0.2s;
+  gap:16px;
+  align-items:center;
+  transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
 }
  
 .info-chip:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 20px rgba(0,0,0,0.07);
+  transform:translateY(-4px);
+  box-shadow:0 14px 30px rgba(0,0,0,0.08);
 }
  
 .info-chip-icon{
@@ -401,35 +411,38 @@ html,body{
 }
  
 .bio-quote{
-  background:var(--c-dark);
-  border-radius:16px;
-  padding:24px 28px;
-  margin-bottom:20px;
+  background:linear-gradient(135deg, var(--c-dark) 0%, #3a2211 100%);
+  border-radius:24px;
+  padding:36px;
+  margin-bottom:32px;
   position:relative;
   overflow:hidden;
+  border: 1px solid rgba(232,184,75,0.15);
+  box-shadow: 0 16px 40px rgba(28,18,9,0.18);
 }
  
 .bio-quote::before{
   content:'"';
   position:absolute;
-  top:-10px;left:16px;
+  top:-20px;left:16px;
   font-family:var(--font-display);
-  font-size:100px;
-  color:rgba(255,255,255,0.06);
+  font-size:140px;
+  color:rgba(232,184,75,0.08);
   line-height:1;
 }
  
 .bio-quote p{
-  font-size:14px;
+  font-size:15px;
   line-height:1.9;
-  color:rgba(255,255,255,0.72);
+  color:rgba(255,255,255,0.9);
   position:relative;
   z-index:1;
+  text-align:justify;
 }
  
 .bio-quote p strong{
   color:var(--c-yellow);
-  font-weight:500;
+  font-weight:600;
 }
  
 .traits{
@@ -443,15 +456,22 @@ html,body{
   background:var(--c-orange-light);
   color:var(--c-orange);
   border-radius:999px;
-  padding:5px 14px;
-  font-size:12px;
-  font-weight:500;
+  padding:6px 16px;
+  font-size:13px;
+  font-weight:600;
   border:1px solid rgba(212,88,10,0.15);
+  box-shadow: 0 2px 8px rgba(212,88,10,0.06);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.trait:hover {
+  transform: translateY(-2px);
+  background: #f8dfc9;
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SLIDE 3 â€” CONVITE
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════
+   SLIDE 3 — CONVITE
+═══════════════════════════════ */
 #s3{
   background:var(--c-dark);
   overflow-y:auto;
@@ -606,9 +626,9 @@ html,body{
   margin-top:2px;
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SLIDE 4 â€” DECISÃƒO
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════
+   SLIDE 4 — DECISÃO
+═══════════════════════════════ */
 #s4{
   background:var(--c-cream);
 }
@@ -650,7 +670,7 @@ html,body{
   position:relative;
   width:100%;
   max-width:480px;
-  height:200px;
+  height:400px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -705,7 +725,7 @@ html,body{
  
 /* Photo Card */
 .decision-card{
-  width:130px;height:168px;
+  width:280px;height:360px;
   border-radius:20px;
   background:var(--c-dark);
   display:flex;
@@ -715,7 +735,7 @@ html,body{
   cursor:grab;
   position:absolute;
   left:50%;
-  margin-left:-65px;
+  margin-left:-140px;
   box-shadow:0 12px 40px rgba(0,0,0,0.2), 0 0 0 3px var(--c-white);
   transition:box-shadow 0.2s;
   z-index:10;
@@ -765,9 +785,9 @@ html,body{
 .swipe-instructions span{display:flex;flex-direction:column;gap:2px;align-items:center;}
 .swipe-instructions strong{color:var(--c-dark);font-size:11px;}
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   POPUP NÃƒO
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════
+   POPUP NÃO
+═══════════════════════════════ */
 #popup-no{
   display:none;
   position:fixed;
@@ -848,9 +868,9 @@ html,body{
  
 .btn-no-popup:hover{background:#fdf3f3;}
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   SLIDE 5 â€” CELEBRAÃ‡ÃƒO
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════
+   SLIDE 5 — CELEBRAÇÃO
+═══════════════════════════════ */
 #s5{
   background:var(--c-dark);
   text-align:center;
@@ -937,13 +957,13 @@ html,body{
   animation:fadeUp 0.7s 1.3s ease both;
 }
  
-/* SLIDE 5 â€” NÃƒO final */
-#s5.state-no .cel-icon-content::before{content:'ðŸ˜¢';}
+/* SLIDE 5 — NÃO final */
+#s5.state-no .cel-icon-content::before{content:'😢';}
 #s5.state-no .cel-title{color:rgba(255,255,255,0.8);}
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ═══════════════════════════════
    LOADING EMAIL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+═══════════════════════════════ */
 #email-loading{
   display:none;
   position:fixed;
@@ -973,9 +993,9 @@ html,body{
   letter-spacing:1px;
 }
  
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   ANIMAÃ‡Ã•ES
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ═══════════════════════════════
+   ANIMAÇÕES
+═══════════════════════════════ */
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(24px);}
   to{opacity:1;transform:translateY(0);}

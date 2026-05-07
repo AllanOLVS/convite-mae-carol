@@ -1,6 +1,6 @@
-﻿// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 // FULLPAGE NAVIGATION
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 let current = 0;
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
@@ -15,13 +15,13 @@ function goTo(n) {
   dots.forEach((d, i) => d.classList.toggle('active', i === current));
 }
  
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 // CARROSSEL
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 let cIdx = 0;
 const cTrack = document.getElementById('ctrack');
 const cDots = document.querySelectorAll('.c-dot');
-const totalSlides = 5;
+const totalSlides = 6;
  
 function cGoTo(n) {
   cIdx = (n + totalSlides) % totalSlides;
@@ -42,12 +42,12 @@ carouselEl.addEventListener('touchend', e => {
   if (Math.abs(diff) > 40) cGoTo(diff > 0 ? cIdx + 1 : cIdx - 1);
 });
  
-// Auto-advance
-setInterval(() => cGoTo(cIdx + 1), 4000);
+// Auto-advance (desabilitado)
+// setInterval(() => cGoTo(cIdx + 1), 4000);
  
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 // SWIPE DECISION
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 const card = document.getElementById('decisionCard');
 const arena = document.getElementById('swipeArena');
 let dragging = false, startX = 0, posX = 0;
@@ -112,9 +112,9 @@ document.getElementById('popup-no').addEventListener('click', function(e) {
   if (e.target === this) this.classList.remove('show');
 });
  
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 // RESOLVE DECISION + ENVIO DE E-MAIL
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 function resolveDecision(choice) {
   document.getElementById('popup-no').classList.remove('show');
  
@@ -131,8 +131,8 @@ function resolveDecision(choice) {
  
 function sendEmail(choice, callback) {
   const resposta = choice === 'sim'
-    ? 'âœ… SIM â€” A mÃ£e da Carol AUTORIZOU o convite! Carol pode ir para o SÃ£o JoÃ£o em MutuÃ­pe.'
-    : 'âŒ NÃƒO â€” A mÃ£e da Carol recusou o convite.';
+    ? '✅ SIM — A mãe da Carol AUTORIZOU o convite! Carol pode ir para o São João em Mutuípe.'
+    : '❌ NÃO — A mãe da Carol recusou o convite.';
  
   const agora = new Date().toLocaleString('pt-BR', {
     timeZone:'America/Bahia',
@@ -140,50 +140,38 @@ function sendEmail(choice, callback) {
     hour:'2-digit', minute:'2-digit'
   });
  
-  const body = encodeURIComponent(
-    `Resposta do Convite â€” MÃ£e da Carol\n\n` +
-    `Data/Hora: ${agora}\n\n` +
-    `DecisÃ£o: ${resposta}\n\n` +
-    `---\nEsta mensagem foi enviada automaticamente pela pÃ¡gina do convite.`
-  );
- 
-  const subject = encodeURIComponent(
-    choice === 'sim'
-      ? 'ðŸŽ‰ A mÃ£e da Carol DISSE SIM! - Convite SÃ£o JoÃ£o'
-      : 'ðŸ˜” A mÃ£e da Carol disse nÃ£o - Convite SÃ£o JoÃ£o'
-  );
- 
-  // EmailJS â€” se nÃ£o tiver configurado, usa mailto como fallback
-  // Para configurar EmailJS: https://www.emailjs.com/
-  // 1. Crie uma conta gratuita no EmailJS
-  // 2. Crie um template e pegue seu public key, service ID e template ID
-  // 3. Substitua os valores abaixo
- 
-  const EMAILJS_PUBLIC_KEY = 'SEU_PUBLIC_KEY_EMAILJS';   // <-- substitua
-  const EMAILJS_SERVICE_ID = 'SEU_SERVICE_ID';            // <-- substitua
-  const EMAILJS_TEMPLATE_ID = 'SEU_TEMPLATE_ID';          // <-- substitua
-  const USE_EMAILJS = false; // <-- mude para true quando configurar o EmailJS
- 
-  if (USE_EMAILJS) {
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      to_email: 'allan.oliveiraa009@gmail.com',
-      subject: choice === 'sim' ? 'ðŸŽ‰ A mÃ£e da Carol DISSE SIM!' : 'ðŸ˜” A mÃ£e da Carol disse nÃ£o',
-      message: decodeURIComponent(body),
-      resposta: resposta,
-      data_hora: agora,
-      decisao: choice === 'sim' ? 'AUTORIZOU âœ…' : 'RECUSOU âŒ'
-    }).then(() => { setTimeout(callback, 400); })
-      .catch(() => {
-        window.open(`mailto:allan.oliveiraa009@gmail.com?subject=${subject}&body=${body}`);
-        setTimeout(callback, 800);
-      });
-  } else {
-    // Fallback: abre o app de e-mail do dispositivo
+  const subject = choice === 'sim'
+      ? '🎉 A mãe da Carol DISSE SIM! - Convite São João'
+      : '😔 A mãe da Carol disse não - Convite São João';
+
+  // Envio usando FormSubmit (não precisa de chaves ou configuração)
+  fetch('https://formsubmit.co/ajax/allan.oliveiraa009@gmail.com', {
+    method: 'POST',
+    headers: { 
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      _subject: subject,
+      Decisao: resposta,
+      Data_e_Hora: agora,
+      Mensagem: "Esta resposta foi capturada automaticamente pela Landing Page do Convite."
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log("Notificação enviada", data);
+    setTimeout(callback, 400);
+  })
+  .catch(error => {
+    console.error("Erro no envio", error);
+    // Fallback mailto
+    const mailBody = encodeURIComponent(`Decisão: ${resposta}\nData: ${agora}`);
     const link = document.createElement('a');
-    link.href = `mailto:allan.oliveiraa009@gmail.com?subject=${subject}&body=${body}`;
+    link.href = `mailto:allan.oliveiraa009@gmail.com?subject=${encodeURIComponent(subject)}&body=${mailBody}`;
     link.click();
-    setTimeout(callback, 1200);
-  }
+    setTimeout(callback, 800);
+  });
 }
  
 function setupResult(choice) {
@@ -193,21 +181,21 @@ function setupResult(choice) {
   const msg = document.getElementById('celMsg');
  
   if (choice === 'sim') {
-    icon.textContent = 'ðŸ¥³';
+    icon.textContent = '🥳';
     title.innerHTML = 'A Carol <em>pode vir!!</em><br>Que alegria!';
-    sub.textContent = 'Promessa feita, promessa cumprida âœ¨';
-    msg.innerHTML = 'Fico muito feliz com a confianÃ§a da senhora! Vou cuidar dela com todo respeito e carinho durante toda a estadia. A senhora nÃ£o vai se arrepender, pode ter certeza. ðŸ’›<br><br>Qualquer novidade, pode me chamar quando quiser!';
+    sub.textContent = 'Promessa feita, promessa cumprida ✨';
+    msg.innerHTML = 'Fico muito feliz com a confiança da senhora! Vou cuidar dela com todo respeito e carinho durante toda a estadia. A senhora não vai se arrepender, pode ter certeza. 💛<br><br>Qualquer novidade, pode me chamar quando quiser!';
   } else {
-    icon.textContent = 'ðŸ˜¢';
-    title.innerHTML = 'Tudo bem,<br><em>respeito a decisÃ£o.</em>';
-    sub.textContent = 'A porta continua aberta ðŸ¤';
-    msg.innerHTML = 'Respeito completamente a decisÃ£o da senhora! SÃ³ queria dizer que fico Ã  disposiÃ§Ã£o caso queira me conhecer melhor antes de decidir de vez. Me chame quando quiser para conversar â€” prometo que compensa. ðŸ˜„';
+    icon.textContent = '😢';
+    title.innerHTML = 'Tudo bem,<br><em>respeito a decisão.</em>';
+    sub.textContent = 'A porta continua aberta 🤝';
+    msg.innerHTML = 'Respeito completamente a decisão da senhora! Só queria dizer que fico à disposição caso queira me conhecer melhor antes de decidir de vez. Me chame quando quiser para conversar — prometo que compensa. 😄';
   }
 }
  
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 // CONFETTI
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 function launchConfetti() {
   const container = document.getElementById('confettiContainer');
   container.innerHTML = '';
@@ -234,14 +222,14 @@ function launchConfetti() {
   }
 }
  
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─────────────────────────────────
 // EMAILJS LOADER (opcional)
-// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-// Para ativar o envio automÃ¡tico de e-mail sem abrir o app de correio:
+// ─────────────────────────────────
+// Para ativar o envio automático de e-mail sem abrir o app de correio:
 // 1. Acesse https://www.emailjs.com/ e crie uma conta gratuita
-// 2. Crie um serviÃ§o de e-mail (Gmail funciona) e um template
-// 3. No template, use as variÃ¡veis: {{subject}}, {{message}}, {{resposta}}, {{data_hora}}, {{decisao}}
-// 4. Cole seu Public Key abaixo e mude USE_EMAILJS para true no cÃ³digo acima
+// 2. Crie um serviço de e-mail (Gmail funciona) e um template
+// 3. No template, use as variáveis: {{subject}}, {{message}}, {{resposta}}, {{data_hora}}, {{decisao}}
+// 4. Cole seu Public Key abaixo e mude USE_EMAILJS para true no código acima
 //
 // Descomente as linhas abaixo quando for usar EmailJS:
 // const ejsScript = document.createElement('script');
